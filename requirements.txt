@@ -1,6 +1,5 @@
 #pip3 freeze > requirements.txt  # Python3
 
-python==3.7
 pyspark==3.1.1
 argparse==1.4
 setuptools==59.6.0
