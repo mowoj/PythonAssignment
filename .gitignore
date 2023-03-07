@@ -8,3 +8,4 @@ dist/
 client_data/
 .pytest_cache/
 .vscode/
+*.egg-info

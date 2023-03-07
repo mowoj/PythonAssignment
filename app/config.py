@@ -8,7 +8,8 @@ from datetime import date
 today = date.today().strftime("%Y%m%d")
 
 # output file directory
-TARGET = {"outputFile": './client_data'}  # pathlib.Path(__file__).parents[1].joinpath('client_data')
+# pathlib.Path(__file__).parents[1].joinpath('client_data')
+TARGET = {"outputFile": './client_data'}
 
 # log parameters
 LOG = {
@@ -16,9 +17,9 @@ LOG = {
     "logTestPath": pathlib.Path(__file__).parents[1].joinpath('test/logs'),
     "logName": 'logfile_' + today + '.log',
     "logTestName": 'logfile_unitTest_' + today + '.log',
-    "logLvl": 'DEBUG',  
-    #CRITICAL; ERROR; WARNING; INFO; DEBUG; NOTSET  
-    # => set up DEBUG to turn on debbuging logs  
+    "logLvl": 'DEBUG',
+    # CRITICAL; ERROR; WARNING; INFO; DEBUG; NOTSET
+    # => set up DEBUG to turn on debbuging logs
     "logMax": 10000,  # maxBytes
     "logBackup": 5,  # backupCount
     "logEnc": 'utf8',  # encoding
