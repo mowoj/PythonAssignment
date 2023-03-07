@@ -3,13 +3,15 @@
 """
 
 import pathlib
-from datetime import date
+from datetime import date, datetime
 
 today = date.today().strftime("%Y%m%d")
+date_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # output file directory
 # pathlib.Path(__file__).parents[1].joinpath('client_data')
-TARGET = {"outputFile": './client_data'}
+# pathlib.Path(__file__).parents[1].joinpath('client_data')
+TARGET = {"outputFile": './client_data/client_data_' + date_time + '.csv'}
 
 # log parameters
 LOG = {

@@ -11,7 +11,7 @@ from app.logger import logs
 from app.sparkbuild import spark
 
 
-def parse_input_args(argv: list = None) ->argparse.Namespace:
+def parse_input_args(argv: list = None) -> argparse.Namespace:
     """handling of application input arguments
     Args: *args
     Returns:
@@ -71,7 +71,7 @@ def parse_input_args(argv: list = None) ->argparse.Namespace:
     return args
 
 
-def read_csv(file_path: str, separator: str) ->DataFrame:
+def read_csv(file_path: str, separator: str) -> DataFrame:
     """loading data from csv file as pyspark dataframe.
        the file separator taken from the parameter.
     Args:
@@ -85,7 +85,7 @@ def read_csv(file_path: str, separator: str) ->DataFrame:
     return new_df
 
 
-def filter_data_isin(src: DataFrame, colnm: str, condition: list) ->DataFrame:
+def filter_data_isin(src: DataFrame, colnm: str, condition: list) -> DataFrame:
     """filtering data by selected column and values.
        In the  output remain data which are in the list of conditions.
     Args:
@@ -101,7 +101,7 @@ def filter_data_isin(src: DataFrame, colnm: str, condition: list) ->DataFrame:
     return new_df
 
 
-def change_col_name(src: DataFrame, old: str, new: str) ->DataFrame:
+def change_col_name(src: DataFrame, old: str, new: str) -> DataFrame:
     """renaming column names according to the list from the configuration file
     Args:
         src (DataFrame): dataframe with data in which the columns should be renamed
@@ -116,7 +116,7 @@ def change_col_name(src: DataFrame, old: str, new: str) ->DataFrame:
     return new_df
 
 
-def check_col_exist(src: DataFrame, colnm: str) ->bool:
+def check_col_exist(src: DataFrame, colnm: str) -> bool:
     """renaming column names according to the list from the configuration file
     Args:
         src (DataFrame): dataframe with data in which the columns should exist
@@ -130,7 +130,7 @@ def check_col_exist(src: DataFrame, colnm: str) ->bool:
         return False
 
 
-def upper_values(val: list) ->list:
+def upper_values(val: list) -> list:
     """Changing string values to capital letters
     Args:
         val (list): the list of strings values

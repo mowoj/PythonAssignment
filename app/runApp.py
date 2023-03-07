@@ -25,14 +25,16 @@ def run() -> int:
     logs.debug('client dataset path: %s', args.dataset1[0])
     client_data_df = read_csv(args.dataset1[0], ",")
     logs.info('6  - End of client data import: finished read_csv()')
-    logs.debug('client_data_df DataFrame Rows count: %s', client_data_df.count())
+    logs.debug('client_data_df DataFrame Rows count: %s',
+               client_data_df.count())
 
     # Create DataFrame with financial data
     logs.info('7 - Starting financial data import: starting read_csv()')
     logs.debug('financial dataset path: %s', args.dataset2[0])
     financial_data_df = read_csv(args.dataset2[0], ",")
     logs.info('8  - End of financial data import: finished read_csv()')
-    logs.debug('financial_data_df DataFrame Rows count: %s', financial_data_df.count())
+    logs.debug('financial_data_df DataFrame Rows count: %s',
+               financial_data_df.count())
 
     # join data frame
     logs.info('9  - Joining two dataframes')
@@ -57,23 +59,27 @@ def run() -> int:
 
     # check the available country name and values
     logs.info('12 - Check if column exist: check_col_exist()')
-    col_exist = check_col_exist(clientfinancial_data_df, colnm)   
+    col_exist = check_col_exist(clientfinancial_data_df, colnm)
     if col_exist == True:
-        logs.info('12.1 - Column "%s" exist in clientFinancialDataDf DataFrame.', colnm)
+        logs.info(
+            '12.1 - Column "%s" exist in clientFinancialDataDf DataFrame.', colnm)
     else:
-        logs.error('12.1 - Error: Column "%s" not exist in clientFinancialDataDf', colnm)
-        logs.error('12.2 - Error: Wrong column name. Column does not exist in the data files')
+        logs.error(
+            '12.1 - Error: Column "%s" not exist in clientFinancialDataDf', colnm)
+        logs.error(
+            '12.2 - Error: Wrong column name. Column does not exist in the data files')
         logs.error('12.3 - Error: Check the correctness of the given column')
         sys.exit(1)
-    
+
     dist_val = (
         clientfinancial_data_df.select(colnm)
         .distinct()
         .rdd.flatMap(lambda x: x)
         .take(15)
     )
-    logs.debug('Available first 15 distinct values from column: "%s" ("%s")', colnm, dist_val)
-    
+    logs.debug(
+        'Available first 15 distinct values from column: "%s" ("%s")', colnm, dist_val)
+
     # filtering the data in new dataFrame
     logs.info('13 - Filtering the data: filter_data_isin()')
     clientfinancial_data_df = filter_data_isin(
@@ -90,9 +96,11 @@ def run() -> int:
     # Remove  personal identifiable information and credit card number
     logs.info('15 - Removing sensitive data from client and financial dataFrames')
 
-    logs.debug('client_data_df DataFrame available columns: %s', client_data_df.columns)
+    logs.debug('client_data_df DataFrame available columns: %s',
+               client_data_df.columns)
     client_data_df = client_data_df.drop("first_name", "last_name", "country")
-    logs.debug('client_data_df DataFrame available columns: %s', client_data_df.columns)
+    logs.debug('client_data_df DataFrame available columns: %s',
+               client_data_df.columns)
 
     logs.debug(
         'financial_data_df DataFrame available columns: %s', financial_data_df.columns
@@ -119,7 +127,8 @@ def run() -> int:
     # rename column
     logs.info('17 - Columns renaming')
     for key, value in chng.items():
-        clientfinancial_data_df = change_col_name(clientfinancial_data_df, key, value)
+        clientfinancial_data_df = change_col_name(
+            clientfinancial_data_df, key, value)
     logs.info('18 - Columns changed')
 
     # Saving modes
@@ -129,9 +138,9 @@ def run() -> int:
     )
     logs.debug('check :%s', trgt['outputFile'])
     logs.info('19 - Saving data to a CSV file')
-    clientfinancial_data_df.write.option('header','True').option('sep',',').mode('overwrite').format('com.databricks.spark.csv').save(trgt['outputFile'])
+    clientfinancial_data_df.write.option('header', 'True').option('sep', ',').mode(
+        'overwrite').format('com.databricks.spark.csv').save(trgt['outputFile'])
 
-    
     logs.info('20 - Data saved')
     logs.info('End of application')
 

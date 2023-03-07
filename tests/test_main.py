@@ -7,7 +7,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StringType
 from chispa.schema_comparer import assert_schema_equality
 
-from app.config import *  # DEFAULTVAL
+from app.config import DEFAULTVAL
 from app.functions import parse_input_args, read_csv
 
 spark = SparkSession.builder.master("local").appName("chispa").getOrCreate()
