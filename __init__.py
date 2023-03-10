@@ -1,3 +1,3 @@
 """
-    initialization file
+    main initialization file
 """

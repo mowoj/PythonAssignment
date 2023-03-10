@@ -8,7 +8,7 @@ from pyspark.sql.types import StructType, StringType
 from chispa.schema_comparer import assert_schema_equality
 
 from app.config import DEFAULTVAL
-from app.functions import parse_input_args, read_csv
+from app.data import parse_input_args, read_csv
 
 spark = SparkSession.builder.master("local").appName("chispa").getOrCreate()
 spark.sparkContext.setLogLevel("OFF")

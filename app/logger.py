@@ -1,38 +1,43 @@
 """ 
-    logging settings file
+    Initialization logger objects using logging
+    Functions:
+        log_init(str, int, int, str, str, str)
+    objects:
+        logs
 """
-import logging
+from logging import Logger, getLogger, Formatter
 from logging.handlers import RotatingFileHandler
 from app.config import LOG
 
 
 def log_init(
     lvl: str, max_val: int, backup: int, enc: str, log_path: str, log_name: str
-):
-    """loading data from csv file as pyspark dataframe.
-       the file separator taken from the parameter
-    Args:
-        lvl      (str): loglevel
-        max_val  (int): maxBytes
-        backup   (int): backupCount
-        enc      (str): encoding type
-        log_path (str): log files directory
-        log_name (str): log file name
-
-    Returns:
-        logger (Handler)
+) ->Logger:
+    """
+    Return a logger with the specified name, creating it if necessary.
+    If no name is specified, return the root logger.
+        Parameters:
+            lvl      (str): loglevel
+            max_val  (int): maxBytes
+            backup   (int): backupCount
+            enc      (str): encoding type
+            log_path (str): log files directory
+            log_name (str): log file name
+    
+        Returns:
+            logger (Logger)
     """
     log_path.mkdir(exist_ok=True)
 
     # Creates a logger objct
-    logger = logging.getLogger(__name__)
+    logger = getLogger(__name__)
 
     # set log level
     logger.setLevel(lvl)
 
     # define file handler and set formatter
-    log_formatter = logging.Formatter(
-        "%(asctime)s :: %(levelname)s :: %(filename)s :: %(message)s "
+    log_formatter = Formatter(
+        "%(asctime)s :: %(levelname)s :: %(filename)s <lineno %(lineno)d> :: %(message)s "
     )
 
     log_file_handler = RotatingFileHandler(
@@ -45,7 +50,8 @@ def log_init(
     log_file_handler.setFormatter(log_formatter)
 
     # add file handler to logger
-    logger.addHandler(log_file_handler)
+    logger.addHandler(log_file_handler) 
+    
     return logger
 
 
@@ -59,8 +65,8 @@ logs = log_init(
     LOG["logName"],
 )
 
-logs.info("Starting the application")
-logs.info("Logger initialization completed")
+logs.info("=====Starting the application=====")
+logs.info("=====Logger initialization completed=====")
 
 
 """
