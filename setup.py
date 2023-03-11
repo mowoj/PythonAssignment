@@ -19,7 +19,7 @@ setup(
     name='PyAppCodacAssignment',
     author='Monika Wojciechowska',
     author_email='monika.wojciechowska@capgemini.com',
-    version='1.0',
+    version='1.3',
     description=('Application with python and pyspark code'),
     long_description=read('README.md'),
     packages=find_packages(exclude=['tests']),
