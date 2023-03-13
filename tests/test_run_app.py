@@ -8,7 +8,8 @@ from app.run_app import parse_input_args, upper_values, lower_values
 
 
 class TestRunApp:
-    """_summary_
+    """
+    Tests for functions from run_app.py file
     """
 
     def test_parse_input_args_relying_on_default_values(self):
