@@ -64,14 +64,14 @@ where:
 ```
 All arguments are optional -> if no values are given, they will be filled with default values (from config.py file)
 
-# Example of run
-1. >python3 __main__.py -c country -v france
+#### **Example of run**
+  - >python3 __main__.py -c country -v france
 
-2. >python3 __main__.py -c country -v france 'United StaTES'
+  - >python3 __main__.py -c country -v france 'United StaTES'
 
-3. >python3 __main__.py -ds1 'src_dataset/dataset_one.csv' -ds1 'src_dataset/dataset_two.csv' -c 'country' -v 'France' 'United Kingdom'
+  - >python3 __main__.py -ds1 'src_dataset/dataset_one.csv' -ds1 'src_dataset/dataset_two.csv' -c 'country' -v 'France' 'United Kingdom'
 
-4. >python3 __main__.py -ds1 'src_dataset/dataset_one.csv' -c id -v 1 2 3 4
+  - >python3 __main__.py -ds1 'src_dataset/dataset_one.csv' -c id -v 1 2 3 4
 
 5. Check the result in client_data/client_data_yyyymmdd_hhmmss.csv
 6. Create source distribution file
