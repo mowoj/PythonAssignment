@@ -14,8 +14,6 @@ today = date.today().strftime("%Y%m%d")
 date_time = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # output file directory
-# pathlib.Path(__file__).parents[1].joinpath('client_data')
-# pathlib.Path(__file__).parents[1].joinpath('client_data')
 TARGET = {"outputFile": './client_data/client_data_' + date_time + '.csv',
           "finalColumns": ['id', 'email', 'btc_a', 'cc_t'],
           "dropColumns": ['first_name','last_name','country','cc_n']
@@ -46,10 +44,6 @@ DEFAULTVAL = {
     "fileHeader": True,
 }
 
-""" 
-    (pathlib.Path(__file__).parents[1].joinpath('src_dataset/dataset_one.csv'))
- str(pathlib.Path(__file__).parents[1].joinpath('src_dataset/dataset_two.csv'))
- """
 
 # the list of colums which shoud be rename
 CHANGENAME = {

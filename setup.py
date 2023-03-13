@@ -6,23 +6,38 @@ import os
 import pathlib
 from setuptools import setup, find_packages
 
-# Utility function to read the README file.
+def read_file_contentad(fname):
+    """
+    Utility function to read the README file.
+    Args:
+        fname (str): file name
 
-def read(fname):
+    Returns:
+        str: readme.md file content
+    """
     return open(pathlib.Path(__file__).parent.joinpath(fname)).read()
-#    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+def open_file (fname):
+    """
+    Utility function to read requirements.txt file
+    Args:
+        fname (str): file name
+
+    Returns:
+        list: requirements.txt file content
+    """
+    with open(fname) as f:
+        required = f.read().splitlines()
+    return required
 
 setup(
     name='PyAppCodacAssignment',
     author='Monika Wojciechowska',
-    author_email='monika.wojciechowska@capgemini.com',
+    author_email='monika.wojciechowska@capgemini.com',  
     version='1.3',
     description=('Application with python and pyspark code'),
-    long_description=read('README.md'),
+    long_description=read_file_contentad('README.md'),
     packages=find_packages(exclude=['tests']),
-    install_requires=required,
+    install_requires=open_file('requirements.txt'),
     project_urls={'Source': 'https://github.com/mowoj/PythonAssignment.git'}
 )

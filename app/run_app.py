@@ -13,7 +13,7 @@ from app.data import AppDataFrame
 def parse_input_args(argv: list = None) -> argparse.Namespace:
     """
     Handling of application input arguments
-        Parameters: *args
+        Args: *args
         Returns:
             argparse.Namespace: application input arguments
     """
@@ -76,7 +76,7 @@ def parse_input_args(argv: list = None) -> argparse.Namespace:
 def upper_values(val: list) -> list:
     """
     Returns a list of Uppercase string values.
-        Parameters:
+        Args:
             val (list): the list of strings values
         Returns:
             upp_val (list): the list of strings values writing in capital letters
@@ -93,7 +93,7 @@ def upper_values(val: list) -> list:
 def lower_values(val: list) -> list:
     """
     Returns a list of Lowercase string values.
-        Parameters:
+        Args:
             val (list): the list of strings values
         Returns:
             low_val (list): the list of strings values writing in lowercase

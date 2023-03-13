@@ -16,7 +16,7 @@ def log_init(
     """
     Return a logger with the specified name, creating it if necessary.
     If no name is specified, return the root logger.
-        Parameters:
+        Args:
             lvl      (str): loglevel
             max_val  (int): maxBytes
             backup   (int): backupCount

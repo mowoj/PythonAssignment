@@ -8,9 +8,10 @@ import pytest
 @pytest.fixture(scope="session")
 def spark_init() -> SparkSession:
     """
-    Fisture function for spark session
+    Fixture function for spark session
+
     Returns:
-        spark (SparkSession): spark session
+        SparkSession: spark session
     """
     spark = SparkSession.builder.master(
         "local").appName("chispa").getOrCreate()
@@ -20,22 +21,45 @@ def spark_init() -> SparkSession:
 
 
 @pytest.fixture(scope="session")
-def test_data_list():
+def data_list():
+    """the list of test data
+
+    Returns:
+        list: test data
+    """
     return ['VALUE_1', 'value_2', 'vAluE_3']
 
 
 @pytest.fixture(scope="session")
-def test_data_upper_list():
+def data_upper_list():
+    """test data after converting to uppercase
+
+    Returns:
+        list: uppercase values
+    """
     return ['VALUE_1', 'VALUE_2', 'VALUE_3']
 
 
 @pytest.fixture(scope="session")
-def test_data_lower_list():
+def data_lower_list():
+    """test data after converting to lowercase
+
+    Returns:
+        list: lowercase values
+    """
     return ['value_1', 'value_2', 'value_3']
 
 
 @pytest.fixture(scope="session")
 def source_dataset1(spark_init):
+    """dataframe with test data
+
+    Args:
+        spark_init (SparkSession): session initialization
+
+    Returns:
+        DataFrame: Dataframe with test dataset1
+    """
     data = [
         ('val_1', 'bac'),
         ('val_2', 'abc'),
@@ -51,6 +75,14 @@ def source_dataset1(spark_init):
 
 @pytest.fixture(scope="session")
 def source_dataset2(spark_init):
+    """dataframe with test data
+
+    Args:
+        spark_init (SparkSession): session initialization
+
+    Returns:
+        DataFrame: Dataframe with test dataset2
+    """
     data = [
         ('val_1', 'abc', 'bac'),
         ('val_2', 'abc', 'cba'),
@@ -67,8 +99,14 @@ def source_dataset2(spark_init):
 @pytest.fixture(scope="session")
 def joined_datasets(spark_init):
     """
-    result of joining two data sets source_dataset1 and source_dataset2 
-    based on col_1  
+    Result of joining two data sets source_dataset1 and source_dataset2 
+    based on col_1 
+
+    Args:
+        spark_init (SparkSession): session initialization
+
+    Returns:
+        DataFrame: Dataframe jining data from dataset1 and dataset2
     """
     data = [
         ('val_1', 'bac', 'abc', 'bac'),
@@ -86,8 +124,13 @@ def joined_datasets(spark_init):
 @pytest.fixture(scope="session")
 def source_data_filtered_by_col2(spark_init):
     """
-    condition based on source_dataset dataset:
-    where col_2 in ('abc','cba')
+    condition based on source_dataset dataset where col_2 in ('abc','cba')
+
+    Args:
+        spark_init (SparkSession): session initialization
+
+    Returns:
+        tuple[DataFrame, str, list]: created dataframe with data and column name with values on which dataframe will be filtered
     """
     data = [
         ('val_3', 'cba', 'bac', 'cba'),
@@ -105,7 +148,13 @@ def source_data_filtered_by_col2(spark_init):
 def rename_datasets(spark_init):
     """
     column change name
-    """        
+
+    Args:
+        spark_init (SparkSession): session initialization
+
+    Returns:
+        tuple[DataFrame, dict]: created dataframe with dictionary with old and new column name
+    """    
     data = [
         ('val_1', 'bac', 'abc', 'bac'),
         ('val_2', 'abc', 'abc', 'cba'),

@@ -30,17 +30,17 @@ class TestRunApp:
         assert isinstance(args.dataset2[0], str)
         assert isinstance(args.column[0], str)
         
-    def test_upper_values_data_change(self,test_data_list,test_data_upper_list):
+    def test_upper_values_data_change(self,data_list,data_upper_list):
         """
         Testing the function that is responsible for changing string values to uppercase
         """    
-        data = upper_values(test_data_list)
-        assert data == test_data_upper_list
+        data = upper_values(data_list)
+        assert data == data_upper_list
     
-    def test_lower_values_data_change(self,test_data_list,test_data_lower_list):
+    def test_lower_values_data_change(self,data_list,data_lower_list):
         """
         Testing the function that is responsible for changing string values to lowercase
         """    
-        data = lower_values(test_data_list)
-        assert data == test_data_lower_list
+        data = lower_values(data_list)
+        assert data == data_lower_list
 
