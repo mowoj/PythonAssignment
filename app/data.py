@@ -5,7 +5,25 @@ Functions used to modification datasets
         AppDataFrame
     
     Functions:
-    
+        filter_data_isin(DataFrame, str, list) -> DataFrame:
+            filtering data selected column and values.
+        change_col_name(DataFrame, dict) -> DataFrame:
+            changing column names
+         
+        count_row() -> int:
+            count number of records in the dataframe
+        column_list() -> list:
+            listed columns from dataframe
+        join_df(class AppDataFrame,  str) -> None:
+            joined two dataframes
+        check_col_exist(str) -> bool:
+            verification if column exists in dataframe
+        filter_data(str, list) -> None:
+            filter data by selected column and values
+        change_col(dict) -> None:
+            change column names 
+        save_to_csv(str, list, str) -> None:
+            Save data to a csv file
 """
 import sys
 from pyspark.sql import DataFrame, SparkSession
@@ -137,7 +155,7 @@ class AppDataFrame:
 
     def join_df(self, second_df: 'AppDataFrame',  condition: str) -> None:
         """
-        Returns new datafram builded as join of two other dataframes
+        Returns new dataframe builded as join of two other dataframes
             Parameters:
                 second_df (DataFrame): the second dataframe which will be joined
                 condition       (str):  condition on which two dataframes will be joined
